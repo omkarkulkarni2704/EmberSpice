@@ -8,7 +8,7 @@ EmberSpice is a restaurant management application that helps customers browse di
 
 ## 🎥 Project Demo
 
-[Watch Demo Video](Add Your Demo Link Here)
+[Watch Demo Video](https://drive.google.com/file/d/1GwwbqVWmaCqlG5CPwlkU5aYTjgK1huQF/view?usp=drive_link)
 
 ---
 
