@@ -1,0 +1,86 @@
+<!-- admin.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="admin-page">
+
+    <div class="top-page-buttons">
+        <a href="javascript:history.back()" class="back-btn">← Back</a>
+        <a href="/" class="home-btn-top">🏠 Home</a>
+    </div>
+
+    <h1>Restaurant Dashboard</h1>
+
+    <div class="stats-container">
+
+        <div class="stat-card">
+            <h3>Total Orders</h3>
+            <p th:text="${#lists.size(orders)}"></p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Total Bookings</h3>
+            <p th:text="${#lists.size(bookings)}"></p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Total Revenue</h3>
+            <p>₹ <span th:text="${totalRevenue}"></span></p>
+        </div>
+
+    </div>
+
+    <div class="admin-section">
+        <h2>Table Bookings</h2>
+
+        <div class="admin-card" th:each="booking : ${bookings}">
+            <p><b>Name:</b> <span th:text="${booking.customerName}"></span></p>
+            <p><b>Phone:</b> <span th:text="${booking.phoneNumber}"></span></p>
+            <p><b>Guests:</b> <span th:text="${booking.guests}"></span></p>
+            <p><b>Date:</b> <span th:text="${booking.bookingDate}"></span></p>
+            <p><b>Time:</b> <span th:text="${booking.bookingTime}"></span></p>
+        </div>
+    </div>
+
+    <div class="admin-section">
+        <h2>Cart Orders</h2>
+
+        <div class="admin-card" th:each="item : ${orders}">
+
+            <p><b>Dish:</b> <span th:text="${item.dishName}"></span></p>
+
+            <p><b>Price:</b> ₹ <span th:text="${item.price}"></span></p>
+
+            <p><b>Quantity:</b> <span th:text="${item.quantity}"></span></p>
+
+            <p>
+                <b>Current Status:</b>
+                <span th:text="${item.status}"></span>
+            </p>
+
+            <div class="status-buttons">
+
+                <a th:href="@{'/update-status/' + ${item.id} + '/Preparing'}"
+                   class="status-btn">
+                    Preparing
+                </a>
+
+                <a th:href="@{'/update-status/' + ${item.id} + '/Delivered'}"
+                   class="status-btn delivered-btn">
+                    Delivered
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

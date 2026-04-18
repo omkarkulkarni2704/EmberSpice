@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My Orders - Foodie Restaurant</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="cart-page">
+
+    <div class="top-page-buttons">
+        <a href="javascript:history.back()" class="back-btn">← Back</a>
+        <a href="/" class="home-btn-top">🏠 Home</a>
+    </div>
+
+    <div class="cart-header">
+        <h1>My Orders</h1>
+    </div>
+
+    <div class="cart-container">
+
+        <div class="cart-left">
+
+            <div class="cart-item" th:each="item : ${orders}">
+
+                <div class="cart-info">
+                    <h2 th:text="${item.dishName}"></h2>
+
+                    <p>
+                        Quantity:
+                        <span th:text="${item.quantity}"></span>
+                    </p>
+
+                    <p>
+                        Price:
+                        ₹ <span th:text="${item.price}"></span>
+                    </p>
+
+                    <p>
+                        Current Status:
+                        <span class="order-status" th:text="${item.status}"></span>
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="cart-summary">
+
+            <h2>Order Status Guide</h2>
+
+            <div class="summary-row">
+                <span>Pending</span>
+                <span>Order Received</span>
+            </div>
+
+            <div class="summary-row">
+                <span>Preparing</span>
+                <span>Chef Is Cooking</span>
+            </div>
+
+            <div class="summary-row total-row">
+                <span>Delivered</span>
+                <span>Ready To Serve</span>
+            </div>
+
+            <a href="/menu" class="checkout-btn">Order More Food</a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

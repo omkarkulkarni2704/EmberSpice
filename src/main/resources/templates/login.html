@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login - Foodie Restaurant</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="login-page">
+	
+	<div class="top-page-buttons">
+	    <a href="javascript:history.back()" class="back-btn">← Back</a>
+	    <a href="/" class="home-btn-top">🏠 Home</a>
+	</div>
+
+    <div class="login-overlay"></div>
+
+    <div class="login-box">
+
+        <div class="login-left">
+            <h1>Welcome Back</h1>
+
+            <p>
+                Login to explore our delicious menu, reserve your table and enjoy a premium dining experience.
+            </p>
+
+            <img src="/images/dishes/Paneer Butter Masala.jpg" alt="Food Image">
+        </div>
+
+        <div class="login-right">
+            <h2>Login</h2>
+
+            <form class="login-form">
+
+                <input type="email" placeholder="Email Address" required>
+
+                <input type="password" placeholder="Password" required>
+
+                <button type="submit">Login</button>
+
+            </form>
+
+            <p class="login-footer-text">
+                New Customer? <a href="#">Create Account</a>
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

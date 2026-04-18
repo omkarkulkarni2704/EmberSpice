@@ -1,0 +1,67 @@
+<!-- cart.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Your Cart</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="cart-page">
+
+    <div class="top-page-buttons">
+        <a href="javascript:history.back()" class="back-btn">← Back</a>
+        <a href="/" class="home-btn-top">🏠 Home</a>
+    </div>
+
+    <div class="cart-header">
+        <h1>Your Selected Food</h1>
+    </div>
+
+    <div class="cart-container">
+
+        <div class="cart-left">
+
+            <div class="cart-item" th:each="item : ${cartItems}">
+
+                <div class="cart-info">
+                    <h2 th:text="${item.dishName}"></h2>
+                    <p>Quantity: <span th:text="${item.quantity}"></span></p>
+                    <p>Price: ₹ <span th:text="${item.price}"></span></p>
+                    <p><b>Status:</b> <span th:text="${item.status}"></span></p>
+                </div>
+
+                <div class="cart-actions">
+                    <a th:href="@{'/remove-cart-item/' + ${item.id}}" class="remove-btn">
+                        Remove
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="cart-summary">
+
+            <h2>Order Summary</h2>
+
+            <div class="summary-row">
+                <span>Total Selected Items</span>
+                <span th:text="${#lists.size(cartItems)}"></span>
+            </div>
+
+            <div class="summary-row total-row">
+                <span>Total Amount</span>
+                <span>₹ <span th:text="${totalAmount}"></span></span>
+            </div>
+
+            <a href="/order-success" class="checkout-btn">Place Order</a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

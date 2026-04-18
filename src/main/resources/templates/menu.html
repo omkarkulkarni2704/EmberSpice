@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Foodie Restaurant - Menu</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="menu-page">
+
+    <div class="sidebar">
+        <h2>Foodie Restaurant</h2>
+
+        <div class="page-buttons-menu">
+            <a href="javascript:history.back()" class="back-btn-menu">← Back</a>
+            <a href="/" class="home-btn-menu">🏠 Home</a>
+        </div>
+
+        <a href="#all">All Items</a>
+        <a href="#roti">Roti & Breads</a>
+        <a href="#maincourse">Main Course</a>
+        <a href="#rice">Rice & Biryani</a>
+        <a href="#soups">Soups</a>
+        <a href="#icecream">Ice Cream</a>
+
+        <a href="/cart">View Cart</a>
+        <a href="/orders">My Orders</a>
+        <a href="/admin">Admin Dashboard</a>
+    </div>
+
+    <div class="content">
+
+        <div class="top-bar" id="all">
+            <h1>Our Menu</h1>
+        </div>
+
+        <!-- Roti & Breads -->
+        <h2 id="roti" class="category-heading">Roti & Breads</h2>
+
+        <div class="dish-row"
+             th:each="item : ${menuItems}"
+             th:if="${item.name == 'Bhakari' or item.name == 'Butter Kulcha' or item.name == 'Butter Naan' or item.name == 'Garlic Naan' or item.name == 'Plain Naan' or item.name == 'chapati'}">
+
+            <img th:src="@{'/images/' + ${item.imageUrl}}" th:alt="${item.name}">
+
+            <div class="dish-info">
+                <h3 th:text="${item.name}"></h3>
+                <p th:text="${item.category}"></p>
+            </div>
+
+            <div class="dish-price">
+                <div>
+                    ₹ <span th:text="${item.price}"></span>
+                </div>
+
+                <form action="/add-to-cart" method="post">
+                    <input type="hidden" name="dishName" th:value="${item.name}">
+                    <input type="hidden" name="price" th:value="${item.price}">
+
+                    <button type="submit" class="cart-btn">Select</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Main Course -->
+        <h2 id="maincourse" class="category-heading">Main Course</h2>
+
+        <div class="dish-row"
+             th:each="item : ${menuItems}"
+             th:if="${item.name == 'Dal Tadka' or item.name == 'Kaju Masala' or item.name == 'Malai Kofta (Sweet)' or item.name == 'Palak Paneer' or item.name == 'Paneer Butter Masala' or item.name == 'Paneer Tikka Masala' or item.name == 'Veg Manchurian' or item.name == 'Gobi Manchurian'}">
+
+            <img th:src="@{'/images/' + ${item.imageUrl}}" th:alt="${item.name}">
+
+            <div class="dish-info">
+                <h3 th:text="${item.name}"></h3>
+                <p th:text="${item.category}"></p>
+            </div>
+
+            <div class="dish-price">
+                <div>
+                    ₹ <span th:text="${item.price}"></span>
+                </div>
+
+                <form action="/add-to-cart" method="post">
+                    <input type="hidden" name="dishName" th:value="${item.name}">
+                    <input type="hidden" name="price" th:value="${item.price}">
+
+                    <button type="submit" class="cart-btn">Select</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Rice & Biryani -->
+        <h2 id="rice" class="category-heading">Rice & Biryani</h2>
+
+        <div class="dish-row"
+             th:each="item : ${menuItems}"
+             th:if="${item.name == 'Veg Biryani' or item.name == 'Plain Rice' or item.name == 'Veg Fried Rice' or item.name == 'Veg Pulav' or item.name == 'Schezwan Noodles'}">
+
+            <img th:src="@{'/images/' + ${item.imageUrl}}" th:alt="${item.name}">
+
+            <div class="dish-info">
+                <h3 th:text="${item.name}"></h3>
+                <p th:text="${item.category}"></p>
+            </div>
+
+            <div class="dish-price">
+                <div>
+                    ₹ <span th:text="${item.price}"></span>
+                </div>
+
+                <form action="/add-to-cart" method="post">
+                    <input type="hidden" name="dishName" th:value="${item.name}">
+                    <input type="hidden" name="price" th:value="${item.price}">
+
+                    <button type="submit" class="cart-btn">Select</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Soups -->
+        <h2 id="soups" class="category-heading">Soups</h2>
+
+        <div class="dish-row"
+             th:each="item : ${menuItems}"
+             th:if="${item.name == 'Tomato Soup' or item.name == 'Hot And Sour Soup'}">
+
+            <img th:src="@{'/images/' + ${item.imageUrl}}" th:alt="${item.name}">
+
+            <div class="dish-info">
+                <h3 th:text="${item.name}"></h3>
+                <p th:text="${item.category}"></p>
+            </div>
+
+            <div class="dish-price">
+                <div>
+                    ₹ <span th:text="${item.price}"></span>
+                </div>
+
+                <form action="/add-to-cart" method="post">
+                    <input type="hidden" name="dishName" th:value="${item.name}">
+                    <input type="hidden" name="price" th:value="${item.price}">
+
+                    <button type="submit" class="cart-btn">Select</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Ice Cream -->
+        <h2 id="icecream" class="category-heading">Ice Cream</h2>
+
+        <div class="dish-row"
+             th:each="item : ${menuItems}"
+             th:if="${item.name == 'Vanilla Ice Cream' or item.name == 'Chocolate Ice Cream' or item.name == 'butterscotch ice cream'}">
+
+            <img th:src="@{'/images/' + ${item.imageUrl}}" th:alt="${item.name}">
+
+            <div class="dish-info">
+                <h3 th:text="${item.name}"></h3>
+                <p th:text="${item.category}"></p>
+            </div>
+
+            <div class="dish-price">
+                <div>
+                    ₹ <span th:text="${item.price}"></span>
+                </div>
+
+                <form action="/add-to-cart" method="post">
+                    <input type="hidden" name="dishName" th:value="${item.name}">
+                    <input type="hidden" name="price" th:value="${item.price}">
+
+                    <button type="submit" class="cart-btn">Select</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

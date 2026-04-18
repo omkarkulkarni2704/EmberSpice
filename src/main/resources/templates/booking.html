@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book Table</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="booking-container">
+	
+	<div class="top-page-buttons">
+	    <a href="javascript:history.back()" class="back-btn">← Back</a>
+	    <a href="/" class="home-btn-top">🏠 Home</a>
+	</div>
+
+    <div class="booking-form-box">
+        <h1>Book Your Table</h1>
+
+        <form action="/booking" method="post" class="booking-form">
+
+            <input type="text" name="customerName" placeholder="Your Name" required>
+
+            <input type="text" name="phoneNumber" placeholder="Phone Number" required>
+
+            <input type="number" name="guests" placeholder="Number of Guests" required>
+
+            <input type="date" name="bookingDate" required>
+
+            <input type="time" name="bookingTime" required>
+
+            <button type="submit">Book Now</button>
+
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>

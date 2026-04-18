@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ember & Spice</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<header class="hero-section">
+
+    <div class="overlay"></div>
+
+    <div class="navbar">
+        <div class="logo">Ember & Spice</div>
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="/menu">Menu</a>
+            <a href="/booking">Book Table</a>
+            <a href="/cart">Cart</a>
+            <a href="/orders">My Orders</a>
+            <a href="/login">Login</a>
+            <a href="/admin">Admin</a>
+        </nav>
+    </div>
+
+    <div class="hero-content">
+        <h1>Experience Premium Dining</h1>
+
+        <p>
+            Discover luxury dining with delicious Indian dishes,
+            elegant ambience and unforgettable taste.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="/menu" class="hero-btn">View Menu</a>
+            <a href="/booking" class="hero-btn secondary-btn">Book Table</a>
+        </div>
+    </div>
+
+</header>
+
+<section class="special-section">
+
+    <h2>Popular Dishes</h2>
+
+    <div class="special-grid">
+
+        <div class="special-card">
+            <img src="/images/dishes/Paneer Butter Masala.jpg" alt="Paneer Butter Masala">
+            <h3>Paneer Butter Masala</h3>
+            <p>Rich and creamy paneer cooked in buttery tomato gravy.</p>
+        </div>
+
+        <div class="special-card">
+            <img src="/images/dishes/Veg Biryani.jpg" alt="Veg Biryani">
+            <h3>Veg Biryani</h3>
+            <p>Fragrant rice with vegetables and traditional spices.</p>
+        </div>
+
+        <div class="special-card">
+            <img src="/images/dishes/Garlic Naan.jpg" alt="Garlic Naan">
+            <h3>Garlic Naan</h3>
+            <p>Soft naan topped with garlic and butter.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="experience-section">
+
+    <div class="experience-box">
+        <div class="experience-content">
+            <span class="section-tag">WHY CHOOSE US</span>
+
+            <h2>More Than Just A Restaurant</h2>
+
+            <p>
+                Ember & Spice is designed for people who want more than ordinary dining.
+                We combine delicious food, premium ambience and seamless online ordering
+                to create a complete restaurant experience.
+            </p>
+
+            <div class="experience-points">
+                <div class="point-card">
+                    <h3>50+</h3>
+                    <p>Signature Dishes</p>
+                </div>
+
+                <div class="point-card">
+                    <h3>1000+</h3>
+                    <p>Happy Customers</p>
+                </div>
+
+                <div class="point-card">
+                    <h3>24x7</h3>
+                    <p>Online Ordering</p>
+                </div>
+            </div>
+
+            <a href="/menu" class="about-btn">Explore Full Menu</a>
+        </div>
+    </div>
+
+</section>
+
+<section class="offers-section">
+
+    <div class="offer-header">
+        <span class="section-tag">SPECIAL OFFERS</span>
+        <h2>Exclusive Deals For You</h2>
+    </div>
+
+    <div class="offer-grid">
+
+        <div class="offer-card premium-offer">
+            <div class="offer-badge">20% OFF</div>
+            <h3>First Table Booking</h3>
+            <p>
+                Book your first table online and get instant 20% discount on your bill.
+            </p>
+        </div>
+
+        <div class="offer-card premium-offer">
+            <div class="offer-badge">FREE</div>
+            <h3>Complimentary Dessert</h3>
+            <p>
+                Get a free dessert on every order above ₹999.
+            </p>
+        </div>
+
+        <div class="offer-card premium-offer">
+            <div class="offer-badge">WEEKEND</div>
+            <h3>Family Combo</h3>
+            <p>
+                Enjoy a special combo meal for 4 people every weekend.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="review-section">
+
+    <h2>Customer Reviews</h2>
+
+    <div class="review-cards">
+
+        <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p>
+                "Amazing food and beautiful ambience. Best restaurant in the city."
+            </p>
+            <h4>- Aditya</h4>
+        </div>
+
+        <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p>
+                "Paneer Butter Masala was absolutely delicious and service was great."
+            </p>
+            <h4>- Snehal</h4>
+        </div>
+
+        <div class="review-card">
+            <div class="review-stars">★★★★☆</div>
+            <p>
+                "Perfect place for family dinner and the food quality is excellent."
+            </p>
+            <h4>- Omkar</h4>
+        </div>
+
+        <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p>
+                "Loved the Veg Biryani and Garlic Naan. Will visit again."
+            </p>
+            <h4>- Priya</h4>
+        </div>
+
+        <div class="review-card">
+            <div class="review-stars">★★★★☆</div>
+            <p>
+                "The restaurant interior and food presentation were really impressive."
+            </p>
+            <h4>- Karan</h4>
+        </div>
+
+        <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p>
+                "Best place to enjoy dinner with friends and family."
+            </p>
+            <h4>- Amit</h4>
+        </div>
+
+        <div class="review-card" th:each="review : ${reviews}">
+
+            <div class="review-stars">
+                <span th:if="${review.rating == 5}">★★★★★</span>
+                <span th:if="${review.rating == 4}">★★★★☆</span>
+                <span th:if="${review.rating == 3}">★★★☆☆</span>
+                <span th:if="${review.rating == 2}">★★☆☆☆</span>
+                <span th:if="${review.rating == 1}">★☆☆☆☆</span>
+            </div>
+
+            <p th:text="${review.comment}"></p>
+
+            <h4>- <span th:text="${review.customerName}"></span></h4>
+
+        </div>
+
+    </div>
+
+    <div class="review-form-box">
+
+        <h3>Write Your Review</h3>
+
+        <form action="/add-review" method="post" class="review-form">
+
+            <input type="text"
+                   name="customerName"
+                   placeholder="Your Name"
+                   required>
+
+            <select name="rating" required>
+                <option value="">Select Rating</option>
+                <option value="5">★★★★★</option>
+                <option value="4">★★★★☆</option>
+                <option value="3">★★★☆☆</option>
+                <option value="2">★★☆☆☆</option>
+                <option value="1">★☆☆☆☆</option>
+            </select>
+
+            <textarea name="comment"
+                      placeholder="Write your review..."
+                      required></textarea>
+
+            <button type="submit">Submit Review</button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+
+    <div class="footer-section">
+        <h3>Ember & Spice</h3>
+        <p>Premium Restaurant & Dining Experience</p>
+    </div>
+
+    <div class="footer-section">
+        <h3>Contact</h3>
+        <p>+91 9876543210</p>
+        <p>contact@emberandspice.com</p>
+    </div>
+
+    <div class="footer-section">
+        <h3>Location</h3>
+        <p>Solapur, Maharashtra</p>
+    </div>
+
+</footer>
+
+</body>
+</html>
