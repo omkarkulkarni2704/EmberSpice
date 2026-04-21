@@ -1,7 +1,7 @@
 package com.omkar.restaurantsite.controller;
 
 import com.omkar.restaurantsite.entity.TableBooking;
-import com.omkar.restaurantsite.repository.TableBookingRepository;
+import com.omkar.restaurantsite.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class BookingController {
 
     @Autowired
-    private TableBookingRepository tableBookingRepository;
+    private BookingService bookingService;
 
     @GetMapping("/booking")
     public String bookingPage() {
@@ -19,13 +19,10 @@ public class BookingController {
     }
 
     @PostMapping("/booking")
-    public String saveBooking(TableBooking tableBooking) {
-        tableBookingRepository.save(tableBooking);
-        return "redirect:/booking-success";
-    }
+    public String saveBooking(TableBooking booking) {
 
-    @GetMapping("/booking-success")
-    public String bookingSuccess() {
+        bookingService.saveBooking(booking);
+
         return "booking-success";
     }
 

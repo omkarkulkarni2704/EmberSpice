@@ -14,13 +14,29 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/", "/menu", "/login", "/css/**", "/images/**").permitAll()
-                .anyRequest().permitAll()
+                    .requestMatchers(
+                            "/",
+                            "/menu",
+                            "/booking",
+                            "/login",
+                            "/cart",
+                            "/orders",
+                            "/add-to-cart",
+                            "/add-review",
+                            "/css/**",
+                            "/images/**"
+                    ).permitAll()
+                    .requestMatchers("/admin/**", "/update-status/**").permitAll()
+                    .anyRequest().authenticated()
             )
             .formLogin(form -> form
-                .loginPage("/login")
-                .defaultSuccessUrl("/dashboard", true)
-                .permitAll()
+                    .loginPage("/login")
+                    .defaultSuccessUrl("/", true)
+                    .permitAll()
+            )
+            .logout(logout -> logout
+                    .logoutSuccessUrl("/")
+                    .permitAll()
             );
 
         return http.build();
